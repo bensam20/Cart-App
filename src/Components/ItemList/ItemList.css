@@ -1,0 +1,23 @@
+
+
+.item-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.item-container .itemCard{
+    color: blue;
+    height: 400px;
+    margin: 1em;
+}
+
+.cardImg {
+    height: 220px;
+    /* width: auto; */
+}
+
+.p-card-title {
+    font-size: 1.25rem !important;
+    height: 3.8rem;
+}
