@@ -47,8 +47,10 @@
 
 .cart-count {
     background-color: white;
+    margin-left: 4px;
+    margin-right: 4px;
     color: black;
     border-style: none;
-    max-width: 5px;
+    max-width: 2rem;
     justify-content: center;
 }
