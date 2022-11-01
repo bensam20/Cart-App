@@ -1,12 +1,18 @@
 import React from "react";
-import ItemList from "./Components/ItemList/ItemList";
-import Navbar from "./Components/Navbar/Navbar";
+import Home from "./Components/Home/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cart from "./Components/CartPage/Cart";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <ItemList />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -7,7 +7,7 @@
     margin-right: 10%;
 }
 .item-container .itemCard{
-    color: blue;
+    /* color: blue; */
     height: 400px;
     margin: 1em;
 }
@@ -18,6 +18,8 @@
 }
 
 .p-card-title {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 3.8rem;
 }
+

@@ -1,6 +1,7 @@
 import React from "react";
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
+import "./Navbar.css"
 
 
 function Navbar() {
@@ -14,7 +15,7 @@ function Navbar() {
         
      ];
 
-     const end = <Button icon="pi pi-shopping-cart"/>
+     const end = <a className="cartLink" href="http://localhost:3000/cart"><Button icon="pi pi-shopping-cart"></Button></a>
 
   return (
     <div>
