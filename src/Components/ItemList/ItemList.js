@@ -21,8 +21,6 @@ function ItemList() {
 
     const addToCart = async (item) => {
       setItemsIncart(itemsInCart + 1);
-      // console.log(itemsInCart);
-      // console.log(item.id);
       let num= item.numOfCarted+1
       console.log(num)
       await axios.put("http://localhost:7000/items/"+item.id, {
@@ -39,7 +37,7 @@ function ItemList() {
   return (
     <div className='item-container'>
         {items.map((item) => (
-          <Card key={items.id} className='itemCard' title={item.name} header={<img className='cardImg' alt="Card" src={item.image}/>} footer={<Button className="p-button-raised p-button-text p-button-plain" onClick={ ()=>addToCart(item) } label="Add to Cart"></Button>}>
+          <Card key={items.id} className='itemCard' title={item.name} header={<img className='cardImg' alt="Card" src={item.image}/>} footer={<Button className="p-button-raised p-button-text p-button-plain in-itemlist" onClick={ ()=>addToCart(item) } label="Add to Cart" ></Button>}>
           </Card>
         ))
         }

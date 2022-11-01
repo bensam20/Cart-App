@@ -10,6 +10,7 @@
     /* color: blue; */
     height: 400px;
     margin: 1em;
+    position: relative;
 }
 
 .cardImg {
@@ -21,5 +22,10 @@
     font-size: 1rem !important;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 3.8rem;
+}
+
+.p-button-raised.p-button-text.p-button-plain.in-itemlist {
+    position: absolute;
+    bottom: 1rem;
 }
 

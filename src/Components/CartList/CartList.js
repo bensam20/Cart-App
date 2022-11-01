@@ -20,6 +20,41 @@ function CartList() {
       getItems();
     }, [])
 
+    const incrementCart = async (item) => {
+      setItemsIncart(itemsInCart + 1);
+      await axios.put("http://localhost:7000/items/"+item.id, {
+        ...item,
+        "numOfCarted":item.numOfCarted + 1
+      }).then( res => {
+        console.log(res);
+        getItems();
+        })
+    }
+
+    const decrementCart = async (item) => {
+      setItemsIncart(itemsInCart - 1);
+      await axios.put("http://localhost:7000/items/"+item.id, {
+        ...item,
+        "numOfCarted":item.numOfCarted - 1
+      }).then( res => {
+        console.log(res);
+        getItems();
+        })
+    }
+
+    const deleteCart = async (item) => {
+      setItemsIncart(itemsInCart - item.numOfCarted);
+      setItemsIncart(itemsInCart - 1);
+      await axios.put("http://localhost:7000/items/"+item.id, {
+        ...item,
+        "cart":false,
+        "numOfCarted":item.numOfCarted - 1
+      }).then( res => {
+        console.log(res);
+        getItems();
+        })
+    }
+
   return (
     <div className='cart-item-container'>
         {items.map((item) => (
@@ -31,10 +66,10 @@ function CartList() {
                   {item.name}
                 </div>
                 <div className="change-number">
-                  <Button label="-" className="p-button-raised p-button-text p-button-plain"></Button>
-                  <Button label={item.numOfCarted} className="cart-count" disabled="true"></Button>
-                  <Button label="+" className="p-button-raised p-button-text p-button-plain"></Button>
-                  <Button icon="pi pi-trash" className="p-button-raised p-button-outlined p-button-danger"></Button>
+                  <Button label="-" onClick={() => decrementCart(item) } className="p-button-raised p-button-text p-button-plain in-cartlist" disabled={item.numOfCarted===1}></Button>
+                  <Button label={String(item.numOfCarted)} className="cart-count" disabled="true"></Button>
+                  <Button label="+" onClick={() => incrementCart(item) } className="p-button-raised p-button-text p-button-plain in-cartlist"></Button>
+                  <Button icon="pi pi-trash" onClick={() => deleteCart(item) } className="p-button-raised p-button-outlined p-button-danger in-cartlist"></Button>
                 </div>
               </div>
         ))
