@@ -48,7 +48,7 @@ function CartList() {
       await axios.put("http://localhost:7000/items/"+item.id, {
         ...item,
         "cart":false,
-        "numOfCarted":item.numOfCarted - 1
+        "numOfCarted":0
       }).then( res => {
         console.log(res);
         getItems();

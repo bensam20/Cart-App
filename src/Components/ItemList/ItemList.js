@@ -32,12 +32,21 @@ function ItemList() {
         getItems();
         })
     }
+
+    const cartbutton = (item) => {
+      if(item.cart){
+        return <Button label="Added to Cart" className="p-button-raised p-button-success p-button-text in-itemlist" disabled="true"/>
+      }
+      else{
+        return <Button className="p-button-raised p-button-text p-button-plain in-itemlist" onClick={ ()=>addToCart(item) } label="Add to Cart" ></Button>
+      }
+    } 
     
 
   return (
     <div className='item-container'>
         {items.map((item) => (
-          <Card key={items.id} className='itemCard' title={item.name} header={<img className='cardImg' alt="Card" src={item.image}/>} footer={<Button className="p-button-raised p-button-text p-button-plain in-itemlist" onClick={ ()=>addToCart(item) } label="Add to Cart" ></Button>}>
+          <Card key={items.id} className='itemCard' title={item.name} header={<img className='cardImg' alt="Card" src={item.image}/>} footer={ () => cartbutton(item) }>
           </Card>
         ))
         }

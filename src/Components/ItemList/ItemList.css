@@ -29,3 +29,7 @@
     bottom: 1rem;
 }
 
+.p-button-raised.p-button-success.p-button-text.in-itemlist{
+    position: absolute;
+    bottom: 1rem;
+}
