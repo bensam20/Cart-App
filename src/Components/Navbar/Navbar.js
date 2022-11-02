@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import "./Navbar.css"
-import { TotalCartContext } from "../Home/Home";
+import { TotalCartItems } from "../Services/TotalCartItems";
 
 
-function Navbar() {
+function Navbar(props) {
     const navigate = useNavigate();
-    const totalCartContext = useContext(TotalCartContext)  
     const items = [
         {
            label:'Shopzy',
@@ -18,13 +17,18 @@ function Navbar() {
         
      ];
 
-     const end = <a className="cartLink" href="http://localhost:3000/cart"><Button icon="pi pi-shopping-cart"></Button></a>
+     const [totalCartItems, setTotalCartItems] = useState();
+
+     // TotalCartItems().then(res.data)
+     useEffect(() => {
+       TotalCartItems().then(data => {setTotalCartItems(data); console.log(data)})
+     }, [])
+
+     const end = <a className="cartLink" href="http://localhost:3000/cart"><Button icon="pi pi-shopping-cart">{totalCartItems?.totalItemsInCart}</Button></a>
 
   return (
     <div>
-        <Menubar model={items} end={end} />
-        gg{totalCartContext.cartState}
-        
+        <Menubar model={items} end={end} />        
     </div>
   )
 }
