@@ -7,8 +7,10 @@ import Navbar from "../Navbar/Navbar";
 
 function Home() {
 
+  
+
   return (
-    <div className="App">
+    <div className="Main">
       <Navbar />
       <ItemList />
     </div>

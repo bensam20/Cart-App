@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './ItemList.css';
+import { CartContext } from '../../App';
 
 function ItemList() {
-    const [items, setItems] = useState([])
-    const [itemsInCart, setItemsIncart] = useState(0)
+    const [items, setItems] = useState([]);
+    const cartContext = useContext(CartContext);
 
     const getItems = async () => {
       await axios.get("http://localhost:7000/items")
-        .then(res => {
-          setItems(res.data)
+      .then(res => {
+          setItems(res.data);
+        });
+      
+      await axios.get("http://localhost:7000/itemsInCart/1")
+      .then(res => {
+        cartContext.setCartTotal(res.data.totalItemsInCart);
         })
     }
 
@@ -19,10 +25,16 @@ function ItemList() {
       getItems();
     }, [])
 
+    const updateCartNumber = async (updateNum) => {
+      await axios.put("http://localhost:7000/itemsInCart/1", {
+        "totalItemsInCart": updateNum
+      }).then( res => {
+        cartContext.setCartTotal(updateNum);
+        getItems();
+      })
+    }
+
     const addToCart = async (item) => {
-      setItemsIncart(itemsInCart + 1);
-      let num= item.numOfCarted+1
-      console.log(num)
       await axios.put("http://localhost:7000/items/"+item.id, {
         ...item,
         "cart":true,
@@ -30,7 +42,14 @@ function ItemList() {
       }).then( res => {
         console.log(res);
         getItems();
-        })
+        });
+      await axios.get("http://localhost:7000/itemsInCart/1")
+      .then( res => res.data)
+      .then(data => {
+        cartContext.setCartTotal(data.totalItemsInCart + 1);
+        updateCartNumber(data.totalItemsInCart + 1);;
+      });
+      
     }
 
     const cartbutton = (item) => {
