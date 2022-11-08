@@ -1,24 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import axios from "axios";
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './ItemList.css';
 import { CartContext } from '../../App';
+import { getCartList, getCartTotal, getItemList, setCart, updateTotalNum } from '../Services/getData';
 
 function ItemList() {
     const [items, setItems] = useState([]);
     const cartContext = useContext(CartContext);
-
-    const getItems = async () => {
-      await axios.get("http://localhost:7000/items")
-      .then(res => {
-          setItems(res.data);
-        });
-      
-      await axios.get("http://localhost:7000/itemsInCart/1")
-      .then(res => {
-        cartContext.setCartTotal(res.data.totalItemsInCart);
-        })
+    
+    const getItems = () => {
+      getItemList().then( data => setItems(data) )
+      getCartList().then( data => cartContext.setCartTotal(data.totalItemsInCart) ) 
     }
 
     useEffect(() => {
@@ -26,28 +19,17 @@ function ItemList() {
     }, [])
 
     const updateCartNumber = async (updateNum) => {
-      await axios.put("http://localhost:7000/itemsInCart/1", {
-        "totalItemsInCart": updateNum
-      }).then( res => {
+      updateTotalNum(updateNum).then(res => {
         cartContext.setCartTotal(updateNum);
         getItems();
       })
     }
 
     const addToCart = async (item) => {
-      await axios.put("http://localhost:7000/items/"+item.id, {
-        ...item,
-        "cart":true,
-        "numOfCarted":item.numOfCarted + 1
-      }).then( res => {
-        console.log(res);
-        getItems();
-        });
-      await axios.get("http://localhost:7000/itemsInCart/1")
-      .then( res => res.data)
-      .then(data => {
+      setCart(item).then(getItems())
+      getCartTotal().then(data => {
         cartContext.setCartTotal(data.totalItemsInCart + 1);
-        updateCartNumber(data.totalItemsInCart + 1);;
+        updateCartNumber(data.totalItemsInCart + 1);
       });
       
     }

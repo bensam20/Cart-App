@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import "./Navbar.css"
-import { TotalCartItems } from "../Services/TotalCartItems";
 import { CartContext } from '../../App';
 
 
