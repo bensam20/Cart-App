@@ -1,28 +1,24 @@
 import axios from "axios";
+import { Links } from "../../Constants/Links";
 
 export async function getItemList(){
-    return await axios.get("http://localhost:7000/items")
+    return await axios.get(Links.getItemList)
     .then(res =>res.data)
 }
 
-export async function getCartList(){
-    return await axios.get("http://localhost:7000/itemsInCart/1")
-    .then(res => res.data )
+export async function getCartTotal() {
+    return await axios.get(Links.setTotal)
+      .then( res => res.data)
 }
 
 export async function updateTotalNum(updateNum){
-    return await axios.put("http://localhost:7000/itemsInCart/1", {
+    return await axios.put(Links.setTotal, {
         "totalItemsInCart": updateNum
       }).then( res => res )
 }
 
-export async function getCartTotal() {
-    return await axios.get("http://localhost:7000/itemsInCart/1")
-      .then( res => res.data)
-}
-
 export async function incrementCartNum(item){
-    return await axios.put(`http://localhost:7000/items/${item.id}`, {
+    return await axios.put(Links.changeCartNum(item), {
         ...item,
         "cart":true,
         "numOfCarted":item.numOfCarted + 1
@@ -30,7 +26,7 @@ export async function incrementCartNum(item){
 }
 
 export async function decrementCartNum(item){
-    return await axios.put(`http://localhost:7000/items/${item.id}`, {
+    return await axios.put(Links.changeCartNum(item), {
         ...item,
         "cart":true,
         "numOfCarted":item.numOfCarted - 1
@@ -38,7 +34,7 @@ export async function decrementCartNum(item){
 }
 
 export async function deleteCartNum(item){
-    return await axios.put(`http://localhost:7000/items/${item.id}`, {
+    return await axios.put(Links.changeCartNum(item), {
         ...item,
         "cart":false,
         "numOfCarted":0

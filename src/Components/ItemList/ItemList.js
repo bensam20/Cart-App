@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './ItemList.css';
 import { CartContext } from '../../App';
-import { getCartList, getCartTotal, getItemList, incrementCartNum, updateTotalNum } from '../Services/getData';
+import { getCartTotal, getItemList, incrementCartNum, updateTotalNum } from '../Services/getData';
 
 function ItemList() {
     const [items, setItems] = useState([]);
@@ -11,7 +11,7 @@ function ItemList() {
     
     const getItems = () => {
       getItemList().then( data => setItems(data) )
-      getCartList().then( data => cartContext.setCartTotal(data.totalItemsInCart) ) 
+      getCartTotal().then( data => cartContext.setCartTotal(data.totalItemsInCart) ) 
     }
 
     useEffect(() => {
