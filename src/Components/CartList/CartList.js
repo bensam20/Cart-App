@@ -38,7 +38,7 @@ function CartList() {
 
   return (
     <div>
-      
+
       <div className='cart-item-container'>
           {items && items.map((item) => (
                 <div className="cartCard" key={item.id}>
@@ -58,7 +58,7 @@ function CartList() {
 
       </div>
       {
-          !items.length && <center><Image imageClassName='empty-image' paddingTop={10} src='/images/cart_empty.png' alt="Image Text" /></center>
+          !items.length && <center><Image imageClassName='empty-image' src='/images/cart_empty.png' alt="Image Text" /></center>
       }
 
     </div>
