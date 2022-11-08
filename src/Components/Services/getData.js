@@ -12,31 +12,40 @@ export async function getCartTotal() {
 }
 
 export async function updateTotalNum(updateNum){
-    return await axios.put(Links.setTotal, {
-        "totalItemsInCart": updateNum
-      }).then( res => res )
+    const updateData = JSON.stringify({"totalItemsInCart": updateNum})
+    return await axios.put(Links.setTotal, updateData)
+        .then( res => res )
 }
 
 export async function incrementCartNum(item){
-    return await axios.put(Links.changeCartNum(item), {
-        ...item,
-        "cart":true,
-        "numOfCarted":item.numOfCarted + 1
-      })
+    const updateData = JSON.stringify(
+        {
+            ...item,
+            "cart":true,
+            "numOfCarted":item.numOfCarted + 1
+        }
+    )
+    return await axios.put(Links.changeCartNum(item), updateData)
 }
 
 export async function decrementCartNum(item){
-    return await axios.put(Links.changeCartNum(item), {
-        ...item,
-        "cart":true,
-        "numOfCarted":item.numOfCarted - 1
-      })
+    const updateData = JSON.stringify(
+        {
+            ...item,
+            "cart":true,
+            "numOfCarted":item.numOfCarted - 1
+        }
+    )
+    return await axios.put(Links.changeCartNum(item), updateData)
 }
 
 export async function deleteCartNum(item){
-    return await axios.put(Links.changeCartNum(item), {
-        ...item,
-        "cart":false,
-        "numOfCarted":0
-    })
+    const updateData = JSON.stringify(
+        {
+            ...item,
+            "cart":true,
+            "numOfCarted":0
+        }
+    )
+    return await axios.put(Links.changeCartNum(item), updateData)
 }
