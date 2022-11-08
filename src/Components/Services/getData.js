@@ -22,7 +22,7 @@ export async function getCartTotal() {
 }
 
 export async function incrementCartNum(item){
-    return await axios.put("http://localhost:7000/items/"+item.id, {
+    return await axios.put(`http://localhost:7000/items/${item.id}`, {
         ...item,
         "cart":true,
         "numOfCarted":item.numOfCarted + 1
@@ -30,7 +30,7 @@ export async function incrementCartNum(item){
 }
 
 export async function decrementCartNum(item){
-    return await axios.put("http://localhost:7000/items/"+item.id, {
+    return await axios.put(`http://localhost:7000/items/${item.id}`, {
         ...item,
         "cart":true,
         "numOfCarted":item.numOfCarted - 1
@@ -38,7 +38,7 @@ export async function decrementCartNum(item){
 }
 
 export async function deleteCartNum(item){
-    return await axios.put("http://localhost:7000/items/"+item.id, {
+    return await axios.put(`http://localhost:7000/items/${item.id}`, {
         ...item,
         "cart":false,
         "numOfCarted":0
