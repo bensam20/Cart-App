@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './ItemList.css';
 import { CartContext } from '../../App';
-import { getCartList, getCartTotal, getItemList, setCart, updateTotalNum } from '../Services/getData';
+import { getCartList, getCartTotal, getItemList, incrementCartNum, updateTotalNum } from '../Services/getData';
 
 function ItemList() {
     const [items, setItems] = useState([]);
@@ -18,15 +18,15 @@ function ItemList() {
       getItems();
     }, [])
 
-    const updateCartNumber = async (updateNum) => {
+    const updateCartNumber = (updateNum) => {
       updateTotalNum(updateNum).then(res => {
         cartContext.setCartTotal(updateNum);
         getItems();
       })
     }
 
-    const addToCart = async (item) => {
-      setCart(item).then(getItems())
+    const addToCart = (item) => {
+      incrementCartNum(item).then(getItems())
       getCartTotal().then(data => {
         cartContext.setCartTotal(data.totalItemsInCart + 1);
         updateCartNumber(data.totalItemsInCart + 1);

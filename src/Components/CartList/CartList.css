@@ -54,3 +54,7 @@
     max-width: 2rem;
     justify-content: center;
 }
+
+.empty-image {
+    margin-top: 10%;
+}
