@@ -3,7 +3,7 @@ import { Button } from 'primereact/button';
 import { Image } from 'primereact/image';
 import "./CartList.css";
 import { CartContext } from '../../App';
-import { getItemList, incrementCartNum, decrementCartNum, updateTotalNum, deleteCartNum } from '../Services/getData';
+import { getItemList, incrementCartNum, decrementCartNum, updateTotalNum, deleteCartNum } from '../../Services/getData';
 
 function CartList() {
 

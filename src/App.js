@@ -1,8 +1,7 @@
 import React, { useContext, createContext } from "react";
-import Home from "./Components/Home/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "./Components/CartPage/Cart";
+import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
+import AppRoutes from "./Components/AppRoutes";
 
 export const CartContext = createContext()
 
@@ -10,14 +9,10 @@ function App() {
   const [cartTotal, setCartTotal] = useState()
 
   return (
-    <div className="App">
+    <div>
       <CartContext.Provider value={ {cartTotal, setCartTotal } }>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
+          <AppRoutes />
         </BrowserRouter>
       </CartContext.Provider>
     </div>

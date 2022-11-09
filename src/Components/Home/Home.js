@@ -6,11 +6,8 @@ import Navbar from "../Navbar/Navbar";
 
 
 function Home() {
-
-  
-
   return (
-    <div className="Main">
+    <div>
       <Navbar />
       <ItemList />
     </div>

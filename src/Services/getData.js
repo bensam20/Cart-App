@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Links } from "../../Constants/Links";
+import { Links } from "../Constants/Links";
 
 export async function getItemList(){
     return await axios.get(Links.getItemList)
@@ -12,8 +12,8 @@ export async function getCartTotal() {
 }
 
 export async function updateTotalNum(updateNum){
-    const updateData = JSON.stringify({"totalItemsInCart": updateNum})
-    return await axios.put(Links.setTotal, updateData)
+    const updateData = JSON.stringify({"totalItemsInCart":updateNum})
+    return await axios.put(Links.setTotal, {"totalItemsInCart":updateNum})
         .then( res => res )
 }
 
@@ -21,11 +21,15 @@ export async function incrementCartNum(item){
     const updateData = JSON.stringify(
         {
             ...item,
-            "cart":true,
-            "numOfCarted":item.numOfCarted + 1
+            cart:true,
+            numOfCarted:item.numOfCarted + 1
         }
     )
-    return await axios.put(Links.changeCartNum(item), updateData)
+    return await axios.put(Links.changeCartNum(item), {
+        ...item,
+        "cart":true,
+        "numOfCarted":item.numOfCarted + 1
+    })
 }
 
 export async function decrementCartNum(item){
@@ -36,7 +40,11 @@ export async function decrementCartNum(item){
             "numOfCarted":item.numOfCarted - 1
         }
     )
-    return await axios.put(Links.changeCartNum(item), updateData)
+    return await axios.put(Links.changeCartNum(item), {
+        ...item,
+        "cart":true,
+        "numOfCarted":item.numOfCarted - 1
+    })
 }
 
 export async function deleteCartNum(item){
@@ -47,5 +55,9 @@ export async function deleteCartNum(item){
             "numOfCarted":0
         }
     )
-    return await axios.put(Links.changeCartNum(item), updateData)
+    return await axios.put(Links.changeCartNum(item), {
+        ...item,
+        "cart":false,
+        "numOfCarted":0
+    })
 }

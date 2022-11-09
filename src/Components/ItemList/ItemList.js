@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './ItemList.css';
 import { CartContext } from '../../App';
-import { getCartTotal, getItemList, incrementCartNum, updateTotalNum } from '../Services/getData';
+import { getCartTotal, getItemList, incrementCartNum, updateTotalNum } from '../../Services/getData';
 
 function ItemList() {
     const [items, setItems] = useState([]);
@@ -55,4 +55,4 @@ function ItemList() {
   )
 }
 
-export default ItemList
+export default ItemList;

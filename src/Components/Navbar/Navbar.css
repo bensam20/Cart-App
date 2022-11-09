@@ -1,3 +1,7 @@
 .cartLink {
     text-decoration: none;
 }
+
+.cart-button>.pi {
+    padding-right: 5px;
+}
