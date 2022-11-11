@@ -1,0 +1,19 @@
+body{
+    background-color: #343232;
+}
+.form-container {
+    background-color: rgb(202, 235, 235);
+    max-width: 40%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+}
+
+.p-input-icon-left{
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.input-field-txt{
+    width: 100%;
+
+}

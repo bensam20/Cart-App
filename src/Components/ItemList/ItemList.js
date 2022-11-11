@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import './ItemList.css';
-import { CartContext } from '../../App';
+import { CartContext } from "../../Contexts/Contexts";
 import { getCartTotal, getItemList, incrementCartNum, updateTotalNum } from '../../Services/getData';
 
 function ItemList() {

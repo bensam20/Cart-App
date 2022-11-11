@@ -1,9 +1,8 @@
-import React, { useContext, createContext } from "react";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import AppRoutes from "./Components/AppRoutes";
-
-export const CartContext = createContext()
+import { CartContext } from "./Contexts/Contexts";
 
 function App() {
   const [cartTotal, setCartTotal] = useState()

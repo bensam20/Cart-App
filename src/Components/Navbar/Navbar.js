@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Menubar } from 'primereact/menubar';
 import { Button } from 'primereact/button';
 import "./Navbar.css"
-import { CartContext } from '../../App';
+import { CartContext } from "../../Contexts/Contexts";
 
 
 function Navbar() {
