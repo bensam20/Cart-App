@@ -48,7 +48,7 @@ function CartList() {
                   </div>
                   <div className="change-number">
                     <Button label="-" onClick={() => decrementCart(item) } className="p-button-raised p-button-text p-button-plain in-cartlist" disabled={item.numOfCarted===1}></Button>
-                    <Button label={String(item.numOfCarted)} className="cart-count" disabled="true"></Button>
+                    <Button label={String(item.numOfCarted)} className="cart-count" disabled={ true }></Button>
                     <Button label="+" onClick={() => incrementCart(item) } className="p-button-raised p-button-text p-button-plain in-cartlist"></Button>
                     <Button icon="pi pi-trash" onClick={() => deleteCart(item) } className="p-button-raised p-button-outlined p-button-danger in-cartlist"></Button>
                   </div>

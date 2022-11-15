@@ -1,11 +1,17 @@
-body{
-    background-color: #343232;
+.login-container {
+    display: flex;
+    flex-direction: row;
+    padding-left: 15%;
+    padding-top: 4%;
+    background-color: aliceblue;
 }
+
 .form-container {
-    background-color: rgb(202, 235, 235);
-    max-width: 40%;
+    width: 30%;
     padding: 1rem;
     border-radius: 0.75rem;
+    height: 700px;
+    margin-top: 250px;
 }
 
 .p-input-icon-left{
@@ -15,5 +21,9 @@ body{
 
 .input-field-txt{
     width: 100%;
+}
 
+.login_img {
+    height: 700px;
+    width: auto;
 }

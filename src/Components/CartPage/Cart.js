@@ -6,9 +6,7 @@ function Cart() {
   return (
     <div>
         <Navbar />
-        {/* <center> */}
-          <CartList />
-        {/* </center> */}
+        <CartList />
     </div>
   )
 }

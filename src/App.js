@@ -2,18 +2,21 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
 import AppRoutes from "./Components/AppRoutes";
-import { CartContext } from "./Contexts/Contexts";
+import { CartContext, LoginContext } from "./Contexts/Contexts";
 
 function App() {
-  const [cartTotal, setCartTotal] = useState()
-
+  const [cartTotal, setCartTotal] = useState();
+  const [validationRes, setValidationRes] = useState('fail');
+  
   return (
     <div>
-      <CartContext.Provider value={ {cartTotal, setCartTotal } }>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
-      </CartContext.Provider>
+      <LoginContext.Provider value={ {validationRes, setValidationRes} }>
+        <CartContext.Provider value={ {cartTotal, setCartTotal } }>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </CartContext.Provider>
+      </LoginContext.Provider>
     </div>
   );
 }

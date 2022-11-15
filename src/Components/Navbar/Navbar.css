@@ -2,6 +2,13 @@
     text-decoration: none;
 }
 
-.cart-button>.pi {
+.cart-btn {
+    min-height: 3rem;
+    min-width: 4.5rem;
+}
+
+.cart-btn>.pi {
     padding-right: 5px;
 }
+
+

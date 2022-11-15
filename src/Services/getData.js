@@ -61,3 +61,8 @@ export async function deleteCartNum(item){
         "numOfCarted":0
     })
 }
+
+export async function authenticateUser() {
+    return await axios.get(Links.checkUser)
+      .then( res => res.data)
+}
