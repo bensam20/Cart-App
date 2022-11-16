@@ -12,9 +12,6 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
-  console.log(location.pathname);
-
   const items = [
     {
       label: 'Shopzy',
@@ -33,6 +30,7 @@ function Navbar() {
         </a>
         <a className="signinLink" onClick={() => {
           loginContext.setValidationRes("failed");
+          localStorage.setItem('isLoggedIn', JSON.stringify(false));
           navigate("/login");
           }}>
           <Button className="signout-btn p-button-text">Sign Out</Button>
@@ -42,7 +40,7 @@ function Navbar() {
   } else {
     if(location.pathname !== '/login'){
       var end = (
-        <a className="signinLink" onClick={() => navigate("/login")}>
+        <a className="signinLink" onClick={() => { navigate("/login");}}>
           <Button className="signin-btn">Sign In</Button>
         </a>
       );

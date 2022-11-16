@@ -1,16 +1,19 @@
+body {
+    background-color: aliceblue;
+}
+
 .login-container {
     display: flex;
     flex-direction: row;
     padding-left: 15%;
-    padding-top: 4%;
-    background-color: aliceblue;
+    padding-top: 2%;
 }
 
 .form-container {
     width: 30%;
     padding: 1rem;
     border-radius: 0.75rem;
-    height: 700px;
+    height: 80%;
     margin-top: 250px;
 }
 
@@ -24,6 +27,6 @@
 }
 
 .login_img {
-    height: 700px;
+    height: 80%;
     width: auto;
 }

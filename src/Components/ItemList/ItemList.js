@@ -21,6 +21,15 @@ function ItemList() {
       getItems();
     }, [])  
 
+    useEffect( () => {
+      const logIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+      console.log("Inside useEffect", localStorage);
+      console.log(logIn)
+      if(logIn){
+          loginContext.setValidationRes('success');
+      }
+    }, []);
+
     const updateCartNumber = (updateNum) => {
       updateTotalNum(updateNum).then(res => {
         cartContext.setCartTotal(updateNum);

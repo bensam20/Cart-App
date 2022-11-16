@@ -62,7 +62,16 @@ export async function deleteCartNum(item){
     })
 }
 
-export async function authenticateUser() {
-    return await axios.get(Links.checkUser)
+export async function authenticateUser(username, password) {
+    let loginRes = '';
+    await axios.get(Links.checkUser)
       .then( res => res.data)
+      .then( data => {
+        if(data.username === username && data.password === password){
+            loginRes = 'success';
+        }else{
+            loginRes = 'failed';
+        }
+      });
+    return loginRes;
 }
