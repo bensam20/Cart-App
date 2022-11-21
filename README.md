@@ -11,6 +11,6 @@ This will start the app in the default port 3000. The app will open in your defa
 
 ## Run the JSON server
 Now in another terminal start the JSON server. Since the app is running in the default port 3000, we need to specify another port in which the JSON server can run. In this project port number 7000 is used to start the JSON server. In the new terminal run the following to start the server:
-'cd data'
+`cd data`
 `json-server --watch db.json --port 7000`
 
