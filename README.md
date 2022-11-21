@@ -5,7 +5,9 @@ This is a simple cart application made using React Js. A JSON server is used to 
 ## Run the app
 
 Clone the repository to your local folder. Open the folder in the editor. Go to the path of the folder in the terminal and run the below code to run the app:\
-`npm start`\
+  ```console
+  npm start
+  ```
 This will start the app in the default port 3000. The app will open in your default browser after compilation. The link of the app run in local host will be:
 'http://localhost:3000/'
 
